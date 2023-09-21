@@ -13,7 +13,9 @@ const horas = document.querySelectorAll("#horas .number");
 const minutos = document.querySelectorAll("#minutos .number");
 const segundos = document.querySelectorAll("#segundos .number");
 
-var countDownDate = new Date('10/19/2023 20:37:55').getTime();
+
+
+var countDownDate = new Date('05/25/2024 20:37:55').getTime();
 
 // Update the count down every 1 second
 var eventCountDownDays = setInterval(function() {
