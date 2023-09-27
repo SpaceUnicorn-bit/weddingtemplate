@@ -1,13 +1,12 @@
-
 const openModal = document.querySelector('.hero__cta');
 const modal = document.querySelector('.modalScreen');
 const closeModal = document.querySelector('.modal__close');
 const Songs = document.querySelector('.actionSong');
 const tipsModal = document.querySelector('.actionTips');
 const dressCodeModal = document.querySelector('.actionDress');
+const inviBtn = document.querySelector('.inviBtn');
 const modalTitle = document.getElementById('modalTitle');
 const formContent = document.getElementById('formSong');
-const paragraph = document.querySelector('.modal__paragraph');
 const dias = document.querySelectorAll("#dias .number");
 const horas = document.querySelectorAll("#horas .number");
 const minutos = document.querySelectorAll("#minutos .number");
@@ -41,31 +40,27 @@ var eventCountDownDays = setInterval(function() {
     }
 }, 1000);
 
-Songs.addEventListener('click', (e)=>{
-    e.preventDefault();
-    modal.classList.add('modal--show');
-    formContent.style.display = 'block';
-    paragraph.style.display = 'none';
-    modalTitle.innerHTML = '¡Sugerir Canción!';
-});
+// Songs.addEventListener('click', (e)=>{
+//     e.preventDefault();
+//     modal.classList.add('modal--show');
+//     formContent.style.display = 'block';
+//     paragraph.style.display = 'none';
+//     modalTitle.innerHTML = '¡Sugerir Canción!';
+// });
 
-tipsModal.addEventListener('click', (e)=>{
+inviBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    console.log('first')
     modal.classList.add('modal--show');
-    modalTitle.innerHTML = 'Tips y Notas';
-});
-
-dressCodeModal.addEventListener('click', (e)=>{
-    e.preventDefault();
-    modal.classList.add('modal--show');
-    modalTitle.innerHTML = 'Codigo de vestimenta';
+    formContent.style.display = 'flex';
+    formContent.style.flexDirection = 'column';
+    modalTitle.innerHTML = 'Invitación';
 });
 
 
 closeModal.addEventListener('click', (e)=>{
     e.preventDefault();
     formContent.style.display = 'none';
-    paragraph.style.display = 'initial';
     modal.classList.remove('modal--show');
 });
 

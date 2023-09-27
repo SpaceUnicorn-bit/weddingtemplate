@@ -16,6 +16,28 @@ main {
     box-sizing: border-box;
 }
 
+.parallax-mirror {
+    visibility: visible;
+    z-index: -100;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    transform: translate3d(0px, 0px, 0px);
+    height: 758.5px;
+    width: 1315px;
+}
+
+.parallax-slider {
+    transform: translate3d(0px, -43px, 0px);
+    position: absolute;
+    height: 739px;
+    width: 1315px;
+    max-width: none;
+    vertical-align: middle;
+    border-style: none;
+}
+
 section {
     transform-style: preserve-3d;
     position: relative;
@@ -52,7 +74,7 @@ section {
 
 
 .bg::after {
-    background: linear-gradient(rgba(0, 0, 0, 0.144), rgba(0, 0, 0, 0.144)), url("./public/bgPhoto.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.144), rgba(0, 0, 0, 0.144)), url("./public/bgtransform.png");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -178,7 +200,7 @@ section {
     flex-shrink: 0;
     margin-top: 5%;
     position: relative;
-    bottom: 50%;
+    bottom: 54%;
 }
 
 .contadorg-icon {
@@ -257,7 +279,9 @@ section.cuenta-regresiva .reloj-col.no-border {
     display: flex;
     width: 100%;
     position: absolute;
-    bottom: 64%;
+    // bottom: 64%;
+    bottom: 29%;
+    z-index: -1;
 }
 
 .frame-parent {
@@ -729,15 +753,16 @@ section.cuenta-regresiva .reloj-col.no-border {
 }
 
 .summary {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-    flex-direction: column;
-    margin-bottom: 3%;
+    @extend .frame-parent;
+    // width: 100%;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // align-content: center;
+    // flex-shrink: 0;
+    // flex-wrap: wrap;
+    // flex-direction: column;
+    // margin-bottom: 3%;
 }
 
 .summary h2 {
@@ -777,7 +802,9 @@ section.cuenta-regresiva .reloj-col.no-border {
 }
 
 .modalScreen{
-    position: fixed;
+    position: sticky;
+    z-index: 999;
+    height: 100%;
     top: 0;
     left: 0;
     right: 0;
@@ -793,6 +820,7 @@ section.cuenta-regresiva .reloj-col.no-border {
 
 .modal--show{
     opacity: 1;
+    height: 100vh;
     pointer-events: unset;
     transition: opacity .6s;
     --transform: translateY(0);
@@ -835,6 +863,35 @@ section.cuenta-regresiva .reloj-col.no-border {
     max-width: 300px;
 }
 
+.inviBtn{ 
+    text-decoration: none;
+    color: #fff;
+    background-color: #989e3f;
+    padding: 1em 3em;
+    border: 1px solid ;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 300;
+    transition: background-color .3s;
+}
+
+.inviBtn:hover{
+color: #989e3f;
+background-color: #fff;
+}
+
+form .form_field {
+    border: 0;
+    border-bottom: 2px solid #22443F;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #22443F;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+
 .modal__close{
     text-decoration: none;
     color: #fff;
@@ -852,19 +909,172 @@ section.cuenta-regresiva .reloj-col.no-border {
     background-color: #fff;
 }
 
+form input {
+    margin-bottom: 5px;
+}
+
+.recomendations{
+    @extend .gifts;
+    h3 {
+        color: #FFF;
+    }
+}
+
+.itemRecomendations {
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateX(55px);
+}
+
+.goldLineRecomendations {
+    width: 100%;
+    position: relative;
+    top: 287px;
+}
+
+.degradientSection {
+    height: 30%;
+    z-index: 999;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1), transparent);
+    position: relative;
+    bottom: -186px;
+}
+
+.paraSection {
+    position: relative;
+    padding: 25vh 10%;
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    box-shadow: 0 -1px 10px rgba(255, 255, 255, 0.7);
+    transform-style: inherit;
+    
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.paraSection h1 {
+    color: #22443F;
+    font-family: Cookie;
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.paraSection:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.7);
+}
+
+.paraSection .title {
+    width: 50%;
+    padding: 5%;
+    border-radius: 5px;
+    background: rgba(240,230,220, .7);
+    box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+    margin-right: 5%;
+    margin-bottom: 7%;
+    h2 {
+        color: #22443F;
+        font-family: Open Sans;
+        font-size: 35px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+    p {
+        color: #0c4940;
+        font-family: Open Sans;
+        font-size: 19px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+
+.paraSection, .paraSection:before {
+    background: 50% 50% / cover;  
+}
+
+.slide:nth-child(2n) .title {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.slide:nth-child(2n+1) .title {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+#paraSection1 {
+    background-image: url("https://picsum.photos/1300/900");
+    transform: translateZ(-1px) scale(2);
+    margin-top: 25%;
+}
+.degradientSectionParallax {
+    height: 41%;
+    z-index: 999;
+    background: linear-gradient(to bottom, rgb(255, 255, 255), transparent);
+    position: relative;
+    bottom: -103px;
+}
+
+.degradientSectionParallaxBottom {
+    height: 38%;
+    z-index: 2;
+    background: linear-gradient(to top, rgb(255, 255, 255), transparent);
+    margin-bottom: 5%;
+    position: relative;
+    top: 68px;
+}
+
 @media screen and (max-width: 900px) {
     .carousel img {
         width: calc(100% / 2);
+    }
+
+    .paraSection .title {
+        width: 88%;
+        h1{font-size: 60px;}
+        h2{font-size: 25px;}
+        p{font-size: 12px;}
+    }
+
+    .degradientSection {
+        height: 10%;
+        bottom: -89px;
+    }
+
+    .degradientSectionParallax {
+        // bottom: 196px;
+        bottom: -33px;
+    }
+
+    .degradientSectionParallaxBottom{
+        margin-bottom: 16%;
+        top: 69px;
     }
 
     .inicio {
         height: 100vh;
     }
 
+    .summary .lineasGold {
+        bottom: 2%;
+    }
+
     .bg::after {
         background-size: cover;
         background-repeat: no-repeat;
-        background-position-x: 31%;
+        background-position-x: 35%;
     }
 
     .line-div {
@@ -941,7 +1151,7 @@ section.cuenta-regresiva .reloj-col.no-border {
         bottom: 20%;
         .lineasGold {
             width: 80vh;
-            bottom: 109%;
+            bottom: 2%;
         }
         .agenda{
             .tag {
@@ -994,8 +1204,13 @@ section.cuenta-regresiva .reloj-col.no-border {
         }
     }
 
+    .recomendations h2 {
+        text-align: center;
+    }
+
     .summary {
-        bottom: 20%;
+        bottom: 27%;
+        height: 13%;
         h2 {
             font-size: 40px;
         }
