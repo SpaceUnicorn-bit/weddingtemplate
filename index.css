@@ -1015,12 +1015,15 @@ form input {
   .paraSection .title p {
     font-size: 12px;
   }
+  #paraSection1 {
+    margin-top: 65%;
+  }
   .degradientSection {
     height: 10%;
-    bottom: -89px;
+    bottom: -66px;
   }
   .degradientSectionParallax {
-    bottom: -33px;
+    bottom: -17px;
   }
   .degradientSectionParallaxBottom {
     margin-bottom: 16%;
@@ -1031,6 +1034,9 @@ form input {
   }
   .summary .lineasGold {
     bottom: 2%;
+  }
+  .tag {
+    transform: translateX(0%);
   }
   .bg::after {
     background-size: cover;
@@ -1148,7 +1154,7 @@ form input {
   }
   .summary {
     bottom: 27%;
-    height: 13%;
+    height: 17%;
   }
   .summary h2 {
     font-size: 40px;
