@@ -1175,7 +1175,8 @@ form input {
   }
   .degradientSectionParallaxBottom {
     margin-bottom: 16%;
-    top: 220px;
+    top: 209px;
+    height: 50%;
   }
   .details {
     margin-top: 50%;
