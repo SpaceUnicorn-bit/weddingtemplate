@@ -6,15 +6,52 @@ const tipsModal = document.querySelector('.actionTips');
 const dressCodeModal = document.querySelector('.actionDress');
 const inviBtn = document.querySelector('.inviBtn');
 const modalTitle = document.getElementById('modalTitle');
-const formContent = document.getElementById('formSong');
 const dias = document.querySelectorAll("#dias .number");
 const horas = document.querySelectorAll("#horas .number");
 const minutos = document.querySelectorAll("#minutos .number");
 const segundos = document.querySelectorAll("#segundos .number");
+const formSubmit = document.getElementById('formSubmit');
+const loader = document.querySelector('.loaderOn');
 
 
 
 var countDownDate = new Date('05/25/2024 20:37:55').getTime();
+
+formSubmit.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formSubmit.style.display = 'none';
+    loader.classList.remove('loaderOn');
+    var formData = new FormData(e.currentTarget);
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://script.google.com/macros/s/AKfycbzTU6J-uSLrTsRA0uUlMa-biMjJRNvnx7yIub3Cby7ePeHQ_I-9EJzuVVjDALzdHKwUJA/exec?'+ new URLSearchParams(formData).toString());
+    // xhr.open('GET', 'https://script.google.com/macros/s/AKfycbzKfKn2YiegwoDkl8vLJ3ggH0sXRPflbUOAkitLb_EATjSLuscKgXxNHPL_Rp4ok3ATbw/exec?'+ new URLSearchParams(formData).toString());
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            var response = xhr.responseText;
+            loader.classList.add('loaderOn');
+            formSubmit.reset();
+            formSubmit.style.display = 'flex';
+            alert("Los datos se guardaron exitosamente.");
+            
+        } else {
+            console.error('Error en la solicitud');
+        }
+    };
+    xhr.send();
+});
+
+
+// formSubmit.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     var formData = new FormData(e.currentTarget);
+//     var script = document.createElement('script');
+//     script.src = 'https://script.google.com/macros/s/AKfycbzKfKn2YiegwoDkl8vLJ3ggH0sXRPflbUOAkitLb_EATjSLuscKgXxNHPL_Rp4ok3ATbw/exec?'+ new URLSearchParams(formData).toString() + '&callback=myCallback';
+//     document.body.appendChild(script);
+
+    // function myCallback(response) {
+    // console.log(response);
+    // }
+// });
 
 // Update the count down every 1 second
 var eventCountDownDays = setInterval(function() {
@@ -40,27 +77,18 @@ var eventCountDownDays = setInterval(function() {
     }
 }, 1000);
 
-// Songs.addEventListener('click', (e)=>{
-//     e.preventDefault();
-//     modal.classList.add('modal--show');
-//     formContent.style.display = 'block';
-//     paragraph.style.display = 'none';
-//     modalTitle.innerHTML = '¡Sugerir Canción!';
-// });
-
 inviBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log('first')
     modal.classList.add('modal--show');
-    formContent.style.display = 'flex';
-    formContent.style.flexDirection = 'column';
+    formSubmit.style.display = 'flex';
+    formSubmit.style.flexDirection = 'column';
     modalTitle.innerHTML = 'Invitación';
 });
 
 
 closeModal.addEventListener('click', (e)=>{
     e.preventDefault();
-    formContent.style.display = 'none';
+    formSubmit.style.display = 'none';
     modal.classList.remove('modal--show');
 });
 
